@@ -14,5 +14,11 @@ int main() {
 	double P = ab + bc + ca;
 	double p = P * 0.5;
 	double S = sqrt(p * (p - ab) * (p - bc) * (p - ca));
-	std::cout << "P= " << P << "|S= " << S << '\n';
+	std::cout << "P= " << P << "|S= " << S << '\n' << "input the eps:";
+	int eps;
+	std::cin >> eps;
+	if (A.distance(CPoint<int>()) <= eps)std::cout << "A is special";
+	if (B.distance(CPoint<int>()) <= eps)std::cout << "B is special";
+	if (C.distance(CPoint<int>()) <= eps)std::cout << "C is special";
+
 }
