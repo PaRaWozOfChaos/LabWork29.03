@@ -10,7 +10,7 @@ public:
 	CPoint() :x(TNum()), y(TNum()) {} // TNum(0)?
 	TNum get_x() const { return x; }
 	TNum get_y() const { return y; }
-	void print_on(std::ostream& os) const
+	virtual void print_on(std::ostream& os) const
 	{
 		os << '(' << x << ';' << y << ')';
 	}
@@ -34,7 +34,29 @@ template<typename TNum>
 std::ostream& operator<<(std::ostream& os,const CPoint<TNum>& A) {
 	A.print_on(os); return os;
 };
+template<>
+std::ostream& operator<<(std::ostream& os, const CPoint<double>& A) {
+	os << std::showpoint;
+	A.print_on(os); return os;
+};
 template<typename TNum>
 CPoint<TNum> operator*(const CPoint<TNum> p,TNum n) {
 	return CPoint<TNum>(p.get_x() * n, p.get_y() * n);
 }   
+template <typename T>
+class NamedPoint: public CPoint<T>
+{ 
+private:
+	char name;
+public:
+	NamedPoint(T a, T b, char n) : CPoint<T>(a, b), name(n) {}
+	NamedPoint(): CPoint<T>(), name(' ') {}
+	char get_name()const {
+		return name;
+	}
+	void print_on(std::ostream& os) const
+	{
+		os << name;
+		CPoint<T> ::print_on(os);
+	}
+};
