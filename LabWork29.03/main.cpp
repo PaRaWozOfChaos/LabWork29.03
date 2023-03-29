@@ -1,6 +1,9 @@
 #include "Points.h"
 
-CPoint<int> read_point() { return CPoint<int>(); };
+CPoint<int> read_point() { 
+	int x, y;
+	std::cin >> x >> y;
+	return CPoint<int>(x,y); };
 int main() {
 	CPoint<int> A = read_point();
 	CPoint<int> B = read_point();
