@@ -1,5 +1,6 @@
 #pragma once
 #include <iostream>
+#include <math.h>
 template<typename TNum>
 class CPoint 
 {
@@ -27,10 +28,13 @@ public:
 template<typename TNum>
 inline TNum CPoint<TNum>::distance(const CPoint& p)
 {
-	return TNum();
+	return sqrt(pow(x - p.x, 2) + pow(y - p.y, 2));
 }
 template<typename TNum>
-std::ostream& operator<<(std::ostream& os, CPoint<TNum> A) {
+std::ostream& operator<<(std::ostream& os,const CPoint<TNum>& A) {
 	A.print_on(os); return os;
-
+};
+template<typename TNum>
+CPoint<TNum> operator*(const CPoint<TNum> p,TNum n) {
+	return CPoint<TNum>(p.get_x() * n, p.get_y() * n);
 }
