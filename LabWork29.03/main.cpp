@@ -1,5 +1,8 @@
+#include "Points.h"
 
 
 int main() {
-	return 0;
+	CPoint<double> A;
+	CPoint<double> B;
+	std::cout << "A=" << A <<'\n';
 }
